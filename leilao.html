@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphones</title>
+</head>
+
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto&family=Rubik:wght@400;500;600&display=swap');
+
+
+        :root {
+            --font: 'Roboto', sans-serif;
+            --font2: 'Rubik', sans-serif;
+
+        }
+
+        body {
+            font-family: var(--font);
+        }
+
+
+        @media screen and (max-width: 768px) {
+            #lote-recuperado {
+                display: none;
+
+            }
+
+            .barra img {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+            }
+
+
+
+            .barra-lote img {
+                margin-left: 70px;
+
+            }
+
+            .container-area {
+                flex-wrap: wrap;
+            }
+
+            .area-produtos {
+                padding: 15px
+            }
+
+
+            #box2 {
+                margin-top: 20px;
+            }
+
+            .mySlides img {
+                height: 300px;
+                object-fit: cover;
+            }
+
+            .prev,
+            .next {
+                padding: 40px;
+                color: rgb(255, 255, 255);
+
+            }
+
+            table {
+                font-size: 0.7em;
+            }
+
+            td {
+                padding: 5px 5px 5px 5px;
+            }
+
+            .area-disponibilidade {
+                display: block;
+            }
+
+            .produtos-restantes {
+                display: none;
+            }
+
+            #popup{
+                padding: 20px;
+                width: 300px;   
+            }
+
+            #mostrarPopup{
+                font-size: 0.7em;
+             
+            }
+
+
+        }
+
+        @media screen and (min-width: 769px) {
+            .mySlides {
+                width: 100%;
+
+            }
+
+            .mySlides img {
+                height: 500px;
+                object-fit: cover;
+
+            }
+
+            .prev,
+            .next {
+                padding: 40px;
+                color: rgb(0, 0, 0);
+            }
+
+
+            #box1 {
+                padding-right: 40px;
+                border-left: 1px solid rgb(196, 196, 196);
+            }
+
+            .area-produtos {
+                padding: 33px
+            }
+
+            td {
+                padding: 5px 20px 5px 20px;
+                ;
+            }
+
+
+            .area-disponibilidade {
+                display: none;
+            }
+
+
+            #popup{
+                padding: 20px;
+                width: 300px;   
+            }
+
+        }
+
+        .barra img {
+            margin: 0 auto;
+
+        }
+
+        .area-barra {
+
+            box-shadow: 1px 1px 10px 1px rgb(138, 138, 138);
+        }
+
+        .barra {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .barra img {
+            max-width: 170px;
+
+        }
+
+        .area-barra-lote {
+            padding-top: 30px;
+
+        }
+
+        .barra-lote {
+            max-width: 1140px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            margin: 0 auto;
+            box-shadow: 1px 1px 10px 1px rgb(138, 138, 138);
+
+        }
+
+        .barra-lote img {
+            max-width: 50px;
+
+        }
+
+        .barra-lote span {
+            padding: 30px;
+            text-align: center;
+        }
+
+        #lote-recuperado {
+            padding: 5px;
+            background-color: #fa6400;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .container-area {
+            width: 100%;
+            display: flex;
+
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 100%;
+
+        }
+
+        .produtos-restantes {
+            box-shadow: 0px 4px 6px 1px rgb(138, 138, 138);
+            font-family: var(--font2);
+        }
+
+        .produtos-restantes p {
+            padding-bottom: 10px;
+            font-size: 0.9em;
+            padding-left: 8px;
+            border-bottom: 1px solid rgb(196, 196, 196);
+        }
+
+        .produtos-restantes span {
+            font-size: 0.8em;
+
+        }
+
+        .area-unidades {
+            padding-bottom: 30px;
+        }
+
+        .icon {
+            padding-bottom: 10px;
+        }
+
+        .produtos-restantes,
+        .unidades {
+            padding: 23px;
+        }
+
+
+        .info-produtos {
+            display: flex;
+            font-size: 0.8em;
+
+        }
+
+        .info {
+            margin: 0 auto;
+            padding-bottom: 10px;
+        }
+
+        .area-data {
+            display: flex;
+            border-bottom: 1px solid rgb(196, 196, 196);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 0.8em;
+        }
+
+        .area-unidades p {
+            padding-bottom: 20px;
+            font-size: 0.8em;
+        }
+
+        .unidades {
+            font-size: 0.8em;
+        }
+
+        .data {
+            margin: 0 auto;
+        }
+
+        #unidade-1,
+        #unidade-2 {
+            padding-top: 7px;
+            border-bottom: 1px solid rgb(196, 196, 196);
+        }
+
+        .botao {
+            padding-bottom: 20px;
+        }
+
+        .botao a {
+            text-decoration: none;
+            padding: 5px 5px 5px 5px;
+            margin-top: 10px;
+            background-color: #fa6400;
+            color: #fff;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .botao a:hover {
+            background-color: #c04d00;
+        }
+
+        #mostrarPopup {
+            background-color: #fff;
+            border: 1px solid slateblue;
+            color: slateblue;
+        }
+
+        .icon {
+
+            position: relative;
+        }
+
+        .icon img {
+            width: 25px;
+        }
+
+        #unidade-3 {
+            padding-top: 10px;
+        }
+
+        .icon p {
+            position: absolute;
+            top: 10px;
+            left: 33px;
+
+        }
+
+
+        .area-icon {
+            border-bottom: 1px solid rgb(196, 196, 196);
+            padding-bottom: 30px;
+        }
+
+
+
+        #box2 {
+            box-shadow: 0px 0px 4px 0px rgb(138, 138, 138);
+            border-radius: 5px;
+
+        }
+
+        .lote-ame-info {
+            padding-top: 12px;
+        }
+
+        .area-tabela {
+            margin-top: 40px;
+        }
+
+        th {
+            padding: 10px;
+            border-top: 1px solid rgb(196, 196, 196);
+            border-bottom: 1px solid rgb(196, 196, 196);
+            text-align: left;
+        }
+
+        table {
+            margin: 0 auto;
+            border-spacing: 0px;
+            width: 100%;
+            font-size: 0.8em;
+            border-bottom: 1px solid rgb(196, 196, 196);
+            padding-bottom: 25px;
+        }
+
+        td span {
+            color: #fa6400;
+        }
+
+        .cabecalho-tabela {
+            color: rgb(196, 196, 196);
+
+        }
+
+        #total-compras {
+            text-align: right;
+        }
+
+        .area-disponibilidade {
+            margin-top: 50px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px -3px rgb(138, 138, 138);
+            border-radius: 4px;
+        }
+
+        .cabecalho-disponibilidade {
+            border-bottom: 1px solid rgb(138, 138, 138);
+            padding-bottom: 5px;
+        }
+
+        .area-disponibilidade p {
+            font-size: 0.8em;
+        }
+
+        .area-descricao {
+            margin-top: 50px;
+            padding: 10px;
+            border: 1px solid rgb(230, 228, 228);
+            color: #696969;
+
+        }
+
+        .descricao {
+            padding-top: 50px;
+        }
+
+        .area-descricao span {
+            font-size: 1.4em;
+            color: #741484;
+        }
+
+        .descricao li {
+            margin-left: 50px;
+
+        }
+
+        .comment {
+            display: flex;
+            margin-bottom: 10px;
+            padding-top: 10px;
+
+        }
+
+        .profile-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            
+        }
+
+        .comment-content {
+            margin-left: 10px;
+        }
+
+        .comment-body {
+            background-color: #f2f3f5;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+        }
+
+        .comment-author:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .comment-text {
+            margin-top: 5px;
+        }
+
+        .comment-actions {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .comment-timestamp {
+            color: #777;
+        }
+
+        .comment a {
+            text-decoration: none;
+        }
+
+        .comment a:hover {
+            text-decoration: underline;
+        }
+
+        .area-facebook {
+            margin-top: 50px;
+            border: 1px solid rgb(201, 199, 199);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .area-facebook p {
+            padding: 10px;
+        }
+
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+    
+            
+        }
+
+        #contagem{
+            font-size: 2.0em;
+            text-align: center;
+            justify-content:center ;
+            display: flex;
+            align-items: center;
+        }
+
+        .lote-pop-up{
+            padding: 20px;
+            border-top: 1px solid rgb(138, 138, 138);
+            border-bottom: 1px solid rgb(138, 138, 138);
+        }
+
+        .lote-pop-up span{
+            font-size: 0.8em;
+        }
+
+        #fecharPopup{
+            position: relative;
+            left: 240px;
+            padding: 4px;
+            font-size: 0.8em;
+            cursor: pointer;
+            
+        }
+
+
+
+    </style>
+
+
+    <style>
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            font-weight: bold;
+            font-size: 28px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+    </style>
+
+    <section>
+        <div class="area-barra">
+            <div class="barra">
+                <img src="https://gnoticiasdahora.com/srcnz/lote-recuperado-2T/pagina-de-lote-400479/LogoSPA2023-removebg-preview.png"
+                    alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="area-barra-lote">
+        <div class="barra-lote">
+            <img src="https://gnoticiasdahora.com/srcnz/lote-recuperado-2T/wp-content/uploads/2023/03/logoame-4.png"
+                alt="">
+            <span>AME MARKETPLACE REF 400497</span>
+            <span id="lote-recuperado">LOTE RECUPERADO</span>
+        </div>
+    </section>
+
+    <section class="area-inicial">
+        <div class="container">
+            <div class="voltar">
+                <span><strong>&larr; VOLTAR PARA A LISTAGEM</strong></span>
+            </div>
+
+            <br>
+
+            <div class="cabecalho">
+                <h2>LOTE SMARTPHONES AME REF 400479 - 1036 PRODUTOS ELETRÔNICOS</h2><br>
+                <p id="localizacao">Localização São Paulo - SP / São Paulo</p><br>
+            </div>
+
+            <div class="container-area">
+                <div class="box" id="box1">
+                    <div class="slideshow-container">
+                        <div class="mySlides">
+                            <img src="https://s2-g1.glbimg.com/ixi5TB3HURGRBoiT9ADubhQd1d0=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/w/J/b8ZBBYQZqoCYMDbvqi8w/whatsapp-image-2019-07-09-at-06.57.53.jpeg"
+                                alt="Imagem 1">
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="https://www.hardware.com.br/wp-content/uploads/static/wp/2022/02/10/jbl-capa.jpg"
+                                alt="Imagem 2">
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="https://img1.exportersindia.com/product_images/bc-full/2021/1/8401603/dji-mavic-air-2-fly-more-combo-1610361351-5685457.jpeg"
+                                alt="Imagem 3">
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="https://files.tecnoblog.net/wp-content/uploads/2021/07/leilao-receita-curitiba-agosto-2021-1-700x591.jpg"
+                                alt="Imagem 4">
+                        </div>
+
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+
+                    <div class="produtos-restantes">
+                        <p>LOTE AME 400479 &bull; Produtos Restantes</p>
+
+                        <div class="unidades">
+                            <ul class="seta" type="none">
+                                <li>&rsaquo; &nbsp; 213 und. IPhone 12 Pro 128gb</li><br>
+                                <li>&rsaquo; &nbsp;198 und. Samsung S23 - Capacidade não informada</li><br>
+                                <li>&rsaquo; &nbsp; 189 und. Drone Djl Mavic - Reembalados</li><br>
+                                <li>&rsaquo; &nbsp; 168 und. JBL Boombox</li><br>
+                                <li>&rsaquo; &nbsp; 139 und. Xbox - Modelo não informado</li><br>
+                                <li>&rsaquo; &nbsp; 128 und. Pen Drive Samsung 2 terabytes</li><br>
+                            </ul>
+                        </div>
+
+                        <hr>
+
+                        <br>
+                        <span>Visitação presencial do lote completo aberta após encerramento da venda parcial</span>
+                    </div>
+                </div>
+
+                <div class="box" id="box2">
+                    <div class="area-produtos">
+                        <p>VENDA PARCIAL POR TEMPO LIMITADO</p><br>
+                        <div class="info-produtos">
+                            <p class="info">VISITAS: 8746</p>
+                            <p class="info">COMPRADORES: 814</p>
+                            <p class="info">LANCES: 814</p>
+                        </div>
+
+                        <hr>
+
+                        <div class="area-data">
+                            <div class="data">
+                                <p><strong>Data de abertura: <br>02/05/2023</strong></p>
+
+                            </div>
+
+                            <div class="data">
+                                <p><strong>Origem:<br>RETIDOS/REEMBALADOS<br>GRUPO AME</p></strong>
+                            </div>
+                        </div>
+
+                        <div class="area-unidades">
+                            <div id="unidade-1">
+                                <p><strong>LOTE PARCIAL - 3 UNIDADES (ANDROID + IOS)<br> <span
+                                            style="font-size: 1.4em;">R$ 286,28</span></strong></p>
+                                <div class="botao">
+                                    <a href="https://go.perfectpay.com.br/PPU38CN20CD">COMPRAR 3 UNIDADES</a>
+                                </div>
+                            </div>
+
+                            <div id="unidade-2">
+                                <p><strong>LOTE PARCIAL - 1 UNIDADE (ANDROID)<br> <span style="font-size: 1.4em;">R$
+                                            117,53</span></strong></p>
+                                <div class="botao">
+                                    <a href="https://checkout.perfectpay.com.br/pay/PPU38CN20BB?">COMPRAR 1 UNIDADE</a>
+                                </div>
+                            </div>
+
+                            <div id="unidade-3">
+                                <p><strong>LOTE COMPLETO (APROX 1036 UNIDADES)<br> R$ 127.812,00</strong></p>
+                                <div class="botao">
+                                    <a id="mostrarPopup" href="">COMPRAR/FAZER OFERTA EM LOTE COMPLETO</a>
+                                </div>
+
+                                <div id="popup">
+                                    <button id="fecharPopup">x</button>
+                                    <p>SERÁ LIBERADO EM: </p>
+                                    <p><span  id="contagem">1:50:00</span></p>
+                                    <div class="lote-pop-up">
+                                        <span>LOTE COMPLETO (1398 UNIDADES)<br></span>
+                                        R$ 127.812.00
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="area-icon">
+                                <div class="icon">
+                                    <img src="https://img.icons8.com/color/48/error--v1.png" alt="error--v1" />
+                                    <p>O valor e quantidade final do lote completo é calculado após o encessamento da
+                                        venda parcial</p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="area-final">
+                                <div class="lote-ame-info">
+                                    <p>LOTE AME 400479 &bull; informações</p>
+                                </div>
+                            </div>
+
+                            <div class="icon">
+                                <img src="https://img.icons8.com/color/48/open-box.png" alt="open-box" />
+                                <p>Produtos novos na embalagem original</p>
+                            </div>
+
+                            <div class="icon">
+                                <img src="https://img.icons8.com/avantgarde/100/delivery.png" alt="delivery" />
+                                <p>Frete Grátis via Jadlog/jamef para todo Brasil</p>
+                            </div>
+
+                            <div class="icon">
+                                <img id="relogio"
+                                    src="https://i.pinimg.com/564x/c7/fc/67/c7fc6798ceb8ab6fe79db62c6d3cb006.jpg"
+                                    alt="delivery" />
+                                <p>30 dias para trocas/reembolsos (mal funcionamento/defeitos)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="area-disponibilidade">
+                <div class="cabecalho-disponibilidade">
+                    <span>LOTE AME 400479 Disponibilidade</span>
+                </div>
+
+                <div class="area-data">
+                    <div class="data">
+                        <p><strong>Data de abertura: <br>02/05/2023</strong></p>
+
+                    </div>
+
+                    <div class="data">
+                        <p><strong>Origem:<br>RETIDOS/REEMBALADOS<br>GRUPO AME</p></strong>
+                    </div>
+                </div>
+
+                <p>Em breve a visitação estará disponivel, aguarde mais informações.</p>
+
+            </div>
+
+            <div class="area-compradores">
+                <div class="area-tabela">
+                    <table>
+                        <tr id="cabecalho-tabela">
+                            <th colspan="3">ÚTIMOS COMPRADORES</th>
+                            <th id="total-compras" colspan="">TOTAL: 814 COMPRA(S)</th>
+                        </tr>
+
+                        <tr>
+                            <td class="cabecalho-tabela">LOGIN</td>
+                            <td class="cabecalho-tabela">DATA</td>
+                            <td class="cabecalho-tabela">LOTE COMPRADO</td>
+                            <td class="cabecalho-tabela">DESCRIÇÃO</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span>A*****78</span><br>
+                                <p>SÃO PAULO</p>
+                            </td>
+
+                            <td>09/05/2023</td>
+                            <td>UNITÁRIO</td>
+                            <td>PESSOA FÍSICA</td>
+                        </tr>
+
+                        <tr>
+                            <td><span>E*****RL</span><br>
+                                <p>SÃO PAULO</p>
+                            </td>
+
+                            <td>09/05/2023</td>
+                            <td>UNITÁRIO</td>
+                            <td>PESSOA FÍSICA</td>
+                        </tr>
+
+                        <tr>
+                            <td><span>V*****LO</span><br>
+                                <p>CABO FRIO</p>
+                            </td>
+
+                            <td>09/05/2023</td>
+                            <td>PARCIAL</td>
+                            <td>PESSOA FÍSICA</td>
+                        </tr>
+
+                        <tr>
+
+                            <td><span>R*****KA</span><br>
+                                <p>SÃO PAULO</p>
+
+                            <td>09/05/2023 </td>
+                            <td>PARCIAL</td>
+                            <td>PESSOA FÍSICA</td>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><span>F*****ID</span><br>
+                                <p>BRASILIA</p>
+                            <td>09/05/2023</td>
+                            </td>
+                            <td>PARCIAL</td>
+                            <td>PESSOA JURÍDICA</td>
+                        </tr>
+
+                        <tr>
+                            <td><span>L*****IU</span><br>
+                                <p>OURO BRANCO</p>
+                            <td>09/05/2023</td>
+
+                            </td>
+                            <td>UNITÁRIO</td>
+                            <td>PESSOA FÍSICA</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="area-descricao">
+                <span>Descrição Detalhada</span>
+                <div class="descricao">
+                    <p>Referência Local: UTE_AME</p><br>
+                    <p>Lote de produtos eletrônicos, sem uso, em sua maioria aparelhos celulares podendo ser reembalados
+                        ou não.</p><br>
+                    <p>PRODUTOS INCLUSOS NO LOTE:</p><br>
+                    <ul>
+                        <li>iPhone 12 Pro Max 128gb</li><br>
+                        <li>iPhone 12 Pro Max 128gb</li><br>
+                    </ul>
+
+                    <p>Embalagens originais, sem uso e/ou marcas</p><br>
+
+                    <ul>
+                        <li>Drone DJI Mavic&nbsp;</li><br>
+                    </ul>
+
+                    <p>Sem caixa original, não sendo possível averiguar o modelo/geração do dispositivo</p><br>
+
+                    <ul>
+                        <li>JBL Boombox</li><br>
+
+                    </ul>
+
+                    <p>Embalagens originais, produto sem uso e/ou marcas</p><br>
+                    <ul>
+                        <li>Samsung S23&nbsp;</li><br>
+                    </ul>
+
+                    <p>Aparelhos novos, fora da embalagem original, não sendo possível constatar a capacidade e/ou
+                        geração do aparelho</p><br>
+
+                    <ul>
+                        <li>Pen Drive Samsung 2 terabytes</li><br>
+                    </ul>
+
+                    <ul>
+                        <li>Pen Drive Samsung 2 terabytes</li><br>
+                    </ul>
+
+                    <p>Embalagens originais, sem uso e/ou marcas</p><br>
+
+                    <p class="p1">Para compras parciais dos lotes, ou seja, unitárias, não é possível escolher entre os
+                        itens do lote. Os mesmos serão separados e enviados de forma aleatória pela transportadora.
+                        Garantimos o funcionamento 100% de todos os produtos do lote por defeitos de fabricação, caso
+                        seja constatado mal uso a troca não será efetuada. Após a compra, a quantidade comprada é
+                        enviada no endereço informado pelo cliente em até 7 dias úteis.</p><br>
+
+                    <p class="p1">Para compras integrais de lote, serão escolhidos apenas 5 cadastros, preferencialmente
+                        de pessoas jurídicas e um representante de nossa central de atendimento entrará em contato para
+                        agendar visitação caso necessário e/ou discutir os termos de pagamento e garantia dos produtos.
+                        Vendo interesse em realizar a visitação, dúvidas técnicas ou negociação, contate com o time de
+                        vendas através dos números / whatsapp: (11) 96879-6271 Falar com Rodrigo Biazzuto ou (11)
+                        97435-9263 Falar com Lucas Amarante ou pelo e-mail: vendas@maisvolume.com. Para compra integral
+                        de lote, o comprador deverá pagar à empresa +Volume Buyers Premium o valor correspondente a 10%
+                        (Dez por cento) sobre o preço da proposta (compra integral).&nbsp;</p><br>
+                </div>
+            </div>
+
+            <div class="area-facebook">
+
+                <div>
+                    <strong>
+                        <p>10 comentarios</p>
+                    </strong>
+                    <hr>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/7.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">David Oliveira</div>
+                            <div class="comment-text">esse lote ta muito bom!! bem melhor que os ultimos de cameras
+                                digitais e mobilias de escritorio</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">2 h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/67.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Sueli Abreu</div>
+                            <div class="comment-text">Pessoal boa noite acabei de receber um drone da DJI porem as
+                                instrucoes estao em ingles, podem me enviar o manual por gentileza? Email
+                                sueliunesp2019@gmail.com</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">3 h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/72.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Maria Fernanda Lima</div>
+                            <div class="comment-text">gente tem como escolher o que vem no lote parcial?? 🙁</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 15 minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/86.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Rodrigo Moraes</div>
+                            <div class="comment-text">Boa tarde, acabei de receber a minha camera Gopro do lote que
+                                comprei pra revenda mas a caixa veio toda amassada, gostaria de ficar com a camera mas é
+                                possivel trocar a embalagem?</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 41 minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/4.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Luiz Fernando</div>
+                            <div class="comment-text">O preço do lote completo está excelente pra revenda. Ta indo
+                                rápido, vamos ver se sobra alguma coisa pra nossa loja!</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 1 minuto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/49.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Kensly Cabral</div>
+                            <div class="comment-text">O meu foi super rápido! eu queria muito um iphone, comprei o lote
+                                parcial, veio um Samsung S23 sem caixa, fiquei chateada mas nao da pra reclamar ne,
+                                coloquei pra vender e acabei de comprar denovo</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 12 minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/65.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Patricia Amorim</div>
+                            <div class="comment-text">esse foi mais rápido que o da magalu, mais ou menos uns 8 dias pra
+                                entrega aqui em SP, em outras cidades deve levar um pouco mais</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 56 minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/34.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Luiz Fernando</div>
+                            <div class="comment-text">O preço do lote completo está excelente pra revenda. Ta indo
+                                rápido, vamos ver se sobra alguma coisa pra nossa loja!</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 32 minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/61.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Ana Lucia Oliveira</div>
+                            <div class="comment-text">Nao tem como escolher, por isso eu sempre vejo lotes que todos os
+                                produtos sao bons e sei que vou gostar, esse ta com um otimo custo beneficio, de tudo ai
+                                eu so nao usaria o drone mas vale uma fortuna kkkk</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 43 minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="http://estoque.org/wp-content/uploads/2023/04/72-1.jpg" alt="Profile picture"
+                        class="profile-picture">
+                    <div class="comment-content">
+                        <div class="comment-body">
+                            <div class="comment-author">Evandro Soares</div>
+                            <div class="comment-text">Nao da pra escolher, ultima vez comprei 3 parciais da sony e veio
+                                2 controles de play5 e um jogo mas nada do videogame kkk, mas faz parte, vendi no
+                                mercadolivre e lucrei +- uns 600 reais</div>
+                        </div>
+                        <div class="comment-actions">
+                            <a href="#">Curtir</a> ·
+                            <a href="#">Responder</a> ·
+                            <span class="comment-timestamp">Há 27 minutos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+<script>
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
+</script>
+
+<script>
+
+    // Função para exibir o popup
+    function mostrarPopup() {
+        var popup = document.getElementById('popup');
+        popup.style.display = 'block';
+    }
+
+    // Função para fechar o popup
+    function fecharPopup() {
+        var popup = document.getElementById('popup');
+        popup.style.display = 'none';
+    }
+
+    // Função para iniciar a contagem regressiva
+    function iniciarContagemRegressiva() {
+        var tempoRestante = 60 * 60 + 50 * 60; // 1 hora e 50 minutos em segundos
+
+        function atualizarContagem() {
+            var horas = Math.floor(tempoRestante / 3600);
+            var minutos = Math.floor((tempoRestante % 3600) / 60);
+            var segundos = tempoRestante % 60;
+
+            document.getElementById('contagem').textContent = horas + ':' + minutos + ':' + segundos;
+
+            if (tempoRestante === 0) {
+                clearInterval(contagemInterval);
+            } else {
+                tempoRestante--;
+            }
+        }
+
+        atualizarContagem();
+
+        var contagemInterval = setInterval(atualizarContagem, 1000);
+    }
+
+    document.getElementById('mostrarPopup').addEventListener('click', function (e) {
+        e.preventDefault();
+        mostrarPopup();
+        iniciarContagemRegressiva();
+    });
+
+    
+    document.getElementById('fecharPopup').addEventListener('click', function () {
+        fecharPopup();
+    });
+</script>
+
+</html>
